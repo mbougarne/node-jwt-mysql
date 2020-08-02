@@ -1,0 +1,22 @@
+{
+  "name": "node-jwt-mysql",
+  "version": "1.0.0",
+  "description": "Node app with JWT and MySQL, following bezkoder.com tutorial",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "migrate": "node ./db/migrate"
+  },
+  "keywords": ["Node", "JWT", "MySQL"],
+  "author": "Mourad Bougarne",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.3"
+  }
+}

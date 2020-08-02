@@ -34,7 +34,7 @@ verifyToken = (req, res, next) =>
 isAdmin = (req, res, next) => {
     User.findByPk(req.userId)
         .then(user => {
-            user.getRoles(roles => {
+            user.getRoles().then(roles => {
                 if(!roles.includes('admin'))
                 {
                     return res.status(403).json({
@@ -49,9 +49,11 @@ isAdmin = (req, res, next) => {
 }
 
 isModerator = (req, res, next) => {
+    
     User.findByPk(req.userId)
         .then(user => {
-            user.getRoles(roles => {
+            
+            user.getRoles().then(roles => {
 
                 if(!roles.includes('moderator'))
                 {
@@ -60,16 +62,19 @@ isModerator = (req, res, next) => {
                         message: 'You are not authorized!'
                     })
                 }
-
                 next()
             })
         })
 }
 
 isAdminOrModerator = (req, res, next) => {
+
     User.findByPk(req.userId)
+
         .then(user => {
-            user.getRoles(roles => {
+
+            user.getRoles().then(roles => {
+
                 if(!roles.includes('admin') || !roles.includes('moderator'))
                 {
                     return res.status(403).json({

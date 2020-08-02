@@ -48,11 +48,12 @@ const signup = (req, res) =>
 }
 
 const signin = (req, res) => {
-    // let findKey = validateEmail(req.body.username) ? 'email' : 'username'
+    
+    let username = validateEmail(req.body.username) ? 'email' : 'username'
 
     User.findOne({
         where: {
-            username: req.body.username
+            [username]: req.body.username
         }
     }).then(user => {
 
